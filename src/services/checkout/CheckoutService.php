@@ -8,12 +8,12 @@ use Xendit\Xendit;
 
 class CheckoutService {
 
-    public function createInvoice($args) {
+    public function createInvoice($args, $apiKey) {
         // $data = json_decode(file_get_contents('php://input'), true);
         // return json_encode($data);
-        $env = Dotenv::createUnsafeImmutable(dirname(BASEPATH));
-        $env->load();
-        $apiKey = $this->env('API_KEY');
+        // $env = Dotenv::createUnsafeImmutable(dirname(BASEPATH));
+        // $env->load();
+        // $apiKey = $this->env('API_KEY');
         // var_dump($apiKey);
 
         $date = new \DateTime();
