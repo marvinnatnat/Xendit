@@ -52,6 +52,26 @@ class CheckoutService {
         return json_encode($response);
     }
 
+    public function getInvoice($id, $apiKey) {
+        header('Content-Type: application/json');
+        $response = [];
+        if ($id == null || $id == "" || $id == "undefined") {
+            $response['message'] = "invoice id not found";
+        }else {
+            try {
+                Xendit::setApiKey($apiKey);
+    
+                $response = \Xendit\Invoice::retrieve($id);
+            } catch (\Exception $e) {
+                http_response_code($e->getCode());
+                $response['message'] = $e->getMessage();
+            }
+        }
+        
+
+        return json_encode($response);
+    }
+
     private function value($value) {
         return $value instanceof Closure ? $value() : $value;
     }

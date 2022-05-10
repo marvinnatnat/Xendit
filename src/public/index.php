@@ -46,4 +46,6 @@ $app->router->get('/api/health', function() {
 
 $app->router->post('/api/invoice', [ApiController::class, 'invoice']);
 
+$app->router->get('/api/invoice', [ApiController::class, 'getInvoiceById']);
+
 $app->run();
